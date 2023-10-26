@@ -7,7 +7,7 @@
         prediction accuracy = # of accuate predictions / # predictions.
     3) Calculate a confusion matrix for your predictions.
         https://en.wikipedia.org/wiki/Confusion_matrix
-        A confusion matrix gives more context to the performance of a classifie.
+        A confusion matrix gives more context to the performance of a classifier.
         The confusion matrix is a table where the columns count predicted labels
         The rows count the actual labels. Correct prediction will line the diagonals.
     4) Try to expland the nearest neighbor classifier to a 3-nearest neighbor classifier.
