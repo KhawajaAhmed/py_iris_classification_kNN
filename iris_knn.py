@@ -38,6 +38,15 @@ def main():
     train_X, train_Y = separate_data_labels(train_df, 'species')
     test_X, test_Y = separate_data_labels(test_df, 'species')
 
+    start_ls = [0,0,0]
+    
+    species_convert = {'setosa':0,'virginica':1,'versicolor':2}
+
+    data = {'setosa':start_ls,'virginica':start_ls,'versicolor':start_ls}
+    df = pd.DataFrame(data)
+    print(df)
+
+
     # ----------- Block 1 ----------- #
     # begin classification on test set.
 
@@ -57,12 +66,14 @@ def main():
         # number of accurate predictions
         if pred_label == true_label:
             num_accurate_pred +=1
+        
+        df.at[species_convert[true_label],pred_label] += 1
 
         # print index and the labels
         print('training set index:', index, ', predicted:', pred_label, ', actual:', true_label)
             
     print("The prediction accuracy is:",str(round(num_accurate_pred/len(test_df)*100,2) ) )
-
+    print(df)
 
 
 main()
