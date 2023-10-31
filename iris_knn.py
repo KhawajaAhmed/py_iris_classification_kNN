@@ -39,13 +39,11 @@ def main():
     test_X, test_Y = separate_data_labels(test_df, 'species')
 
     start_ls = [0,0,0]
-    
-    species_convert = {'setosa':0,'virginica':1,'versicolor':2}
+    species_names = ['setosa','virginica','versicolor']
 
-    data = {'setosa':start_ls,'virginica':start_ls,'versicolor':start_ls}
+    data = {species_names[0]:start_ls,species_names[1]:start_ls,species_names[2]:start_ls}
     df = pd.DataFrame(data)
-    print(df)
-
+    df.index = species_names
 
     # ----------- Block 1 ----------- #
     # begin classification on test set.
@@ -67,7 +65,7 @@ def main():
         if pred_label == true_label:
             num_accurate_pred +=1
         
-        df.at[species_convert[true_label],pred_label] += 1
+        df.at[true_label,pred_label] += 1
 
         # print index and the labels
         print('training set index:', index, ', predicted:', pred_label, ', actual:', true_label)
